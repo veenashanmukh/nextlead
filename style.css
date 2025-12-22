@@ -1,0 +1,128 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.msg{
+    color: red;
+    font-size: 18px;
+}
+.form{
+    display: flex;
+    align-items: center;
+   
+    min-height: 90vh;
+    
+}
+.form form{
+    
+    text-align: center;
+    box-shadow: 0px 6px 20px rgb(145, 144, 144);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 28rem;
+}
+.form form h2{
+    margin-bottom: 1.5rem;
+}
+.form form input{
+    padding: 10px 15px;
+    font-size: 15px;
+
+}
+.form form button{
+    width: 100%;
+    margin-top: 10px;
+    
+    color: white;
+    font-size: 18px;
+}
+.form form p{
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+
+.form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input,
+.form-group select {
+    margin-bottom: 15px;
+}
+
+button[name="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+button[name="submit"]:hover {
+    background-color: #007bff; 
+}
+body {
+    background-image: url('images/pexels-cottonbro-4669141.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+
+.container-fluid{
+    background-color: #007bff;
+    width: 25px;
+    min-height: 70px;
+}
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar-container {
+    background-color: #007bff; 
+    padding: 15px 0;  
+    text-align: center;
+}
+
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; 
+    text-transform: uppercase;
+    letter-spacing: 1.5px; 
+    text-decoration: none;
+    transition: color 0.3s ease; 
+    
+}
+/* style.css */
+body {
+  background: url('https://t3.ftcdn.net/jpg/03/89/61/88/360_F_389618887_PImTbyGB4vTQOoGKxjhOKp2w7hZmcNAs.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #f8f9fa; /* fallback color */
+  margin: 0;
+  padding-top: 72px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
