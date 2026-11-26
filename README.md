@@ -6,7 +6,7 @@ It deploys from git to **Render** using the included `Dockerfile`, with a free c
 ## 1. Create a free MySQL database
 Use any MySQL host, e.g. **Aiven** (aiven.io → free MySQL plan) or **TiDB Cloud Serverless**.
 Copy its host, port, user, password and database name.
-Open its SQL console (or MySQL Workbench) and run `database.sql` once to create the tables.
+The app creates its tables automatically the first time it connects (from `database.sql`).
 
 ## 2. Deploy on Render (auto-deploys on every git push)
 1. render.com → sign in with GitHub → **New → Blueprint** → pick this repo (it reads `render.yaml`).

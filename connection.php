@@ -20,4 +20,13 @@ if (!$ok) {
     die("Connection failed: " . mysqli_connect_error());
 }
 $conn->set_charset('utf8mb4');
+
+// First run on a new database: create the tables automatically from database.sql
+$check = $conn->query("SHOW TABLES LIKE 'admins'");
+if ($check && $check->num_rows === 0 && is_readable(__DIR__ . '/database.sql')) {
+    $schema = preg_replace('/^--.*$/m', '', file_get_contents(__DIR__ . '/database.sql'));
+    if ($conn->multi_query($schema)) {
+        do { if ($r = $conn->store_result()) { $r->free(); } } while ($conn->more_results() && $conn->next_result());
+    }
+}
 ?>
