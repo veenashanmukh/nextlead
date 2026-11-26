@@ -1,8 +1,6 @@
 <?php
 // Include PHPMailer classes manually
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -13,8 +11,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'veenasb2006@gmail.com';
-    $mail->Password = 'pttfbxmmcgjwoumh';
+    $mail->Username = getenv('SMTP_USER');
+    $mail->Password = getenv('SMTP_PASS');
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 $mail->SMTPOptions = array(
@@ -25,7 +23,7 @@ $mail->SMTPOptions = array(
     )
 );
 
-    $mail->setFrom('veenasb2006@gmail.com', 'veena sb');
+    $mail->setFrom(getenv('SMTP_USER'), 'veena sb');
     $mail->addAddress('gireeshpatil2005@gmail.com', 'gireesh patil');
 
     $mail->isHTML(true);

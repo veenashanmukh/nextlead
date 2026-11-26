@@ -7,9 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 session_start();
 require 'connection.php';
-require 'phpmailer/src/PHPMailer.php';
-    require 'phpmailer/src/SMTP.php';
-    require 'phpmailer/src/Exception.php';
+require __DIR__ . '/vendor/autoload.php';
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'veenasb2006@gmail.com';        // change to your email
-            $mail->Password = 'pttfbxmmcgjwoumh';           // use app password
+            $mail->Username = getenv('SMTP_USER');        // change to your email
+            $mail->Password = getenv('SMTP_PASS');           // use app password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             $mail->SMTPOptions = [
@@ -55,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ],
             ];
 
-            $mail->setFrom('your_email@gmail.com', 'Online Voting System');
+            $mail->setFrom(getenv('SMTP_USER'), 'Online Voting System');
             $mail->addAddress($email, $user['name']);
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';

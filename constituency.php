@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_constituency'])) 
     $stmt->execute();
     $stmt->close();
 
-    header("Location: manage_constituencies.php");
+    header("Location: constituency.php");
     exit;
 }
 
@@ -31,7 +31,7 @@ if (isset($_GET['delete_id'])) {
     $stmt->execute();
     $stmt->close();
 
-    header("Location: manage_constituencies.php");
+    header("Location: constituency.php");
     exit;
 }
 
@@ -62,7 +62,7 @@ $result = $conn->query($sql);
             <h5>Add New Constituency</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="manage_constituencies.php">
+            <form method="POST" action="constituency.php">
                 <div class="form-group">
                     <label for="constituency_name">Constituency Name</label>
                     <input type="text" class="form-control" name="constituency_name" id="constituency_name" required>
@@ -93,7 +93,7 @@ $result = $conn->query($sql);
                                 <td><?= htmlspecialchars($row['id']) ?></td>
                                 <td><?= htmlspecialchars($row['name']) ?></td>
                                 <td>
-                                    <a href="manage_constituencies.php?delete_id=<?= $row['id'] ?>" class="btn btn-danger btn-sm"
+                                    <a href="constituency.php?delete_id=<?= $row['id'] ?>" class="btn btn-danger btn-sm"
                                        onclick="return confirm('Are you sure you want to delete this constituency?')">Delete</a>
                                 </td>
                             </tr>

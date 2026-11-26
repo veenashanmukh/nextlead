@@ -52,9 +52,7 @@ if ($stmt_insert_vote->execute()) {
     $email_query->close();
 
     // Load PHPMailer (manual installation)
-    require 'phpmailer/src/PHPMailer.php';
-    require 'phpmailer/src/SMTP.php';
-    require 'phpmailer/src/Exception.php';
+    require __DIR__ . '/vendor/autoload.php';
 
     $mail = new PHPMailer(true);
 
@@ -63,8 +61,8 @@ if ($stmt_insert_vote->execute()) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'veenasb2006@gmail.com';
-        $mail->Password = 'pttfbxmmcgjwoumh'; // Use your Gmail App Password
+        $mail->Username = getenv('SMTP_USER');
+        $mail->Password = getenv('SMTP_PASS'); // Use your Gmail App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
@@ -78,7 +76,7 @@ if ($stmt_insert_vote->execute()) {
         ];
 
         // Recipients
-        $mail->setFrom('veenasb2006@gmail.com', 'Online Voting System');
+        $mail->setFrom(getenv('SMTP_USER'), 'Online Voting System');
         $mail->addAddress($voter_email, $voter_name);
 
         // Content

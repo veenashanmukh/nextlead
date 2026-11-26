@@ -1,12 +1,23 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root"; // or "" depending on MAMP settings
-$dbname = "voting_system";
+// Database settings come from environment variables on the server.
+// The fallbacks are your local MAMP settings, so it still works on your computer.
+$servername = getenv('DB_HOST') ?: 'localhost';
+$username   = getenv('DB_USER') ?: 'root';
+$password   = getenv('DB_PASS') !== false ? getenv('DB_PASS') : 'root';
+$dbname     = getenv('DB_NAME') ?: 'voting_system';
+$port       = (int)(getenv('DB_PORT') ?: 3306);
+$useSsl     = filter_var(getenv('DB_SSL') ?: 'false', FILTER_VALIDATE_BOOLEAN);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+mysqli_report(MYSQLI_REPORT_OFF);
+$conn = mysqli_init();
+if ($useSsl) {
+    // Cloud MySQL providers (Aiven, TiDB Cloud, etc.) require SSL.
+    $conn->ssl_set(null, null, '/etc/ssl/certs/ca-certificates.crt', null, null);
 }
+$ok = @$conn->real_connect($servername, $username, $password, $dbname, $port, null, $useSsl ? MYSQLI_CLIENT_SSL : 0);
+
+if (!$ok) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$conn->set_charset('utf8mb4');
 ?>
