@@ -34,7 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['reset_email'] = $email;
         $_SESSION['reset_table'] = $tableFound;
 
-        $resetLink = "http://localhost/project/reset_password.php?token=$token";
+        // Build the link to this site. APP_URL (e.g. https://nextlead-cyjp.onrender.com) is preferred,
+        // because the Host header can be faked to send people a reset link to another website.
+        $scheme = !empty($_SERVER['HTTP_X_FORWARDED_PROTO'])
+            ? explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO'])[0]
+            : ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
+        $basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
+        $siteUrl = rtrim(trim((string) getenv('APP_URL')), '/');
+        if ($siteUrl === '') {
+            $siteUrl = $scheme . '://' . $_SERVER['HTTP_HOST'] . $basePath;
+        }
+        $resetLink = $siteUrl . '/reset_password.php?token=' . $token;
 
         $mail = new PHPMailer(true);
         try {
