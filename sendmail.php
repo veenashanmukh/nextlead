@@ -13,13 +13,13 @@ try {
     $mail->isSMTP();                                            // Use SMTP
     $mail->Host       = 'smtp.gmail.com';                       // Gmail SMTP server
     $mail->SMTPAuth   = true;                                   // Enable SMTP auth
-    $mail->Username = getenv('SMTP_USER');                  // Your Gmail address
-    $mail->Password = getenv('SMTP_PASS');               // The 16-char App Password
+    $mail->Username = trim((string) getenv('SMTP_USER'));                  // Your Gmail address
+    $mail->Password = str_replace(' ', '', trim((string) getenv('SMTP_PASS')));               // The 16-char App Password
     $mail->SMTPSecure = 'tls';                                  // Use TLS encryption
     $mail->Port       = 587;                                    // TLS port
 
     // Recipients
-    $mail->setFrom(getenv('SMTP_USER'), 'veena sb');
+    $mail->setFrom(trim((string) getenv('SMTP_USER')), 'veena sb');
     $mail->addAddress('gireeshpatil2005@gmail.com', 'gireesh patil');
 
     // Content

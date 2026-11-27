@@ -41,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = getenv('SMTP_USER');        // change to your email
-            $mail->Password = getenv('SMTP_PASS');           // use app password
+            $mail->Username = trim((string) getenv('SMTP_USER'));        // change to your email
+            $mail->Password = str_replace(' ', '', trim((string) getenv('SMTP_PASS')));           // use app password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             $mail->SMTPOptions = [
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ],
             ];
 
-            $mail->setFrom(getenv('SMTP_USER'), 'Online Voting System');
+            $mail->setFrom(trim((string) getenv('SMTP_USER')), 'Online Voting System');
             $mail->addAddress($email, $user['name']);
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';

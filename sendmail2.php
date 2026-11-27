@@ -11,8 +11,8 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = getenv('SMTP_USER');
-    $mail->Password = getenv('SMTP_PASS');
+    $mail->Username = trim((string) getenv('SMTP_USER'));
+    $mail->Password = str_replace(' ', '', trim((string) getenv('SMTP_PASS')));
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 $mail->SMTPOptions = array(
@@ -23,7 +23,7 @@ $mail->SMTPOptions = array(
     )
 );
 
-    $mail->setFrom(getenv('SMTP_USER'), 'veena sb');
+    $mail->setFrom(trim((string) getenv('SMTP_USER')), 'veena sb');
     $mail->addAddress('gireeshpatil2005@gmail.com', 'gireesh patil');
 
     $mail->isHTML(true);

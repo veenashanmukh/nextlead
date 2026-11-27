@@ -61,8 +61,8 @@ if ($stmt_insert_vote->execute()) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = getenv('SMTP_USER');
-        $mail->Password = getenv('SMTP_PASS'); // Use your Gmail App Password
+        $mail->Username = trim((string) getenv('SMTP_USER'));
+        $mail->Password = str_replace(' ', '', trim((string) getenv('SMTP_PASS'))); // Use your Gmail App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
@@ -76,7 +76,7 @@ if ($stmt_insert_vote->execute()) {
         ];
 
         // Recipients
-        $mail->setFrom(getenv('SMTP_USER'), 'Online Voting System');
+        $mail->setFrom(trim((string) getenv('SMTP_USER')), 'Online Voting System');
         $mail->addAddress($voter_email, $voter_name);
 
         // Content
