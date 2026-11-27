@@ -72,8 +72,9 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
-    <title>Login - Online Voting System</title>
+    <title>Login - NextLead</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
@@ -109,10 +110,14 @@ if (isset($_POST['submit'])) {
             font-size: 0.9rem;
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <div class="navbar-container d-flex justify-content-between align-items-center p-3 bg-dark">
-        <a class="navbar-brand text-white" href="#">Online Voting System</a>
+        <a class="navbar-brand text-white" href="#">NextLead</a>
         <a href="welcome.php" class="btn btn-light">Home</a>
     </div>
 
@@ -144,7 +149,7 @@ if (isset($_POST['submit'])) {
     </div>
 
     <footer class="mt-auto bg-light text-center py-3">
-        <small>&copy; 2025 Online Voting System. All rights reserved.</small>
+        <small>&copy; <?= date('Y') ?> NextLead. All rights reserved.</small>
     </footer>
 </body>
 </html>

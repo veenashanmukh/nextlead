@@ -78,6 +78,7 @@ if ($election_ended) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Voter Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -104,11 +105,15 @@ if ($election_ended) {
             margin-bottom: 60px;
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
 <div class="navbar navbar-dark bg-dark px-3">
-    <span class="navbar-brand text-white">Online Voting System</span>
+    <span class="navbar-brand text-white">NextLead</span>
     <a href="logout.php" class="btn btn-light">Logout</a>
 </div>
 
@@ -161,22 +166,23 @@ if ($election_ended) {
                                 <input type="hidden" name="voter_id" value="<?= $voter_id ?>">
                                 <input type="hidden" name="election_id" value="<?= $election_id ?>">
                                 <div class="form-group">
-                                    <h5>Choose a Candidate:</h5>
-                                    <?php while ($candidate = $candidates_result->fetch_assoc()): ?>
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input" type="radio" name="candidate_id" value="<?= $candidate['candidate_id'] ?>" required>
-                                            <label class="form-check-label">
-                                                <strong><?= htmlspecialchars($candidate['name']) ?></strong><br>
-                                                <small>
-                                                    Party: <?= htmlspecialchars($candidate['party_name']) ?><br>
-                                                    Age: <?= htmlspecialchars($candidate['age']) ?><br>
-                                                    Gender: <?= htmlspecialchars($candidate['gender']) ?>
-                                                </small>
-                                            </label>
-                                        </div>
+                                    <p class="text-muted mb-3">Press the blue button next to your candidate. The red lamp shows your choice.</p>
+                                    <div class="ballot" role="radiogroup" aria-label="Candidates">
+                                    <?php $serial = 0; while ($candidate = $candidates_result->fetch_assoc()): $serial++; ?>
+                                        <label class="ballot-row">
+                                            <input type="radio" name="candidate_id" value="<?= $candidate['candidate_id'] ?>" required>
+                                            <span class="ballot-no"><?= $serial ?></span>
+                                            <span>
+                                                <span class="ballot-name"><?= htmlspecialchars($candidate['name']) ?></span>
+                                                <span class="ballot-meta"><?= htmlspecialchars($candidate['party_name']) ?>, <?= htmlspecialchars($candidate['gender']) ?>, <?= htmlspecialchars($candidate['age']) ?></span>
+                                            </span>
+                                            <span class="ballot-lamp" aria-hidden="true"></span>
+                                            <span class="ballot-btn" aria-hidden="true"></span>
+                                        </label>
                                     <?php endwhile; ?>
+                                    </div>
                                 </div>
-                                <button type="submit" name="vote" class="btn btn-primary mt-3">Submit Vote</button>
+                                <button type="submit" name="vote" class="btn btn-primary ballot-cast">Cast my vote</button>
                             </form>
                         <?php else: ?>
                             <div class="alert alert-warning">No candidates found for your constituency and election.</div>
@@ -193,8 +199,8 @@ if ($election_ended) {
                         <?php while ($election = $election_result->fetch_assoc()): ?>
                             <li class="list-group-item">
                                 <strong><?= htmlspecialchars($election['name']) ?></strong><br>
-                                Start: <?= htmlspecialchars($election['start_date']) ?><br>
-                                End: <?= htmlspecialchars($election['end_date']) ?>
+                                Opens <?= date('j M Y', strtotime($election['start_date'])) ?><br>
+                                Closes <?= date('j M Y', strtotime($election['end_date'])) ?>
                             </li>
                         <?php endwhile; ?>
                     </ul>
@@ -207,7 +213,7 @@ if ($election_ended) {
 </div>
 
 <footer class="text-center py-3">
-    <small>&copy; 2025 Online Voting System. All rights reserved.</small>
+    <small>&copy; <?= date('Y') ?> NextLead. All rights reserved.</small>
 </footer>
 
 </body>

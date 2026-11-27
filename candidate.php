@@ -43,6 +43,7 @@ $results = $stmt_results->get_result();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <title>Candidate Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -74,14 +75,18 @@ $results = $stmt_results->get_result();
             font-weight: 500;
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
-<div class="fixed-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
-    <h4 class="mb-0">Candidate Dashboard</h4>
+<div class="navbar px-3">
+    <span class="navbar-brand">Candidate Dashboard</span>
     <a href="logout.php" class="btn btn-light">Logout</a>
 </div>
-<p class="message">You can also vote by logging in as a voter using your voter ID.</p>
+<p class="message">To vote yourself, log in with your voter account.</p>
 
 <div class="container mt-4">
     <!-- Logged-in candidate info -->

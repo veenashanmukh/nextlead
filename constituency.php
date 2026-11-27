@@ -43,9 +43,14 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Manage Constituencies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <div class="navbar navbar-dark bg-dark px-3">
@@ -108,7 +113,7 @@ $result = $conn->query($sql);
 </div>
 
 <footer class="bg-light text-center py-3 mt-5">
-    <small>&copy; 2025 Online Voting System. All rights reserved.</small>
+    <small>&copy; <?= date('Y') ?> NextLead. All rights reserved.</small>
 </footer>
 </body>
 </html>

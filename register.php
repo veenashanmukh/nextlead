@@ -133,10 +133,14 @@ if (isset($_POST['submit'])) {
             background: rgba(255, 255, 255, 0.9);
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <div class="navbar-container d-flex justify-content-between align-items-center p-3 bg-dark text-white">
-        <a class="navbar-brand text-white" href="#">Online Voting System</a>
+        <a class="navbar-brand text-white" href="#">NextLead</a>
         <a href="welcome.php" class="btn btn-light">Home</a>
     </div>
 
@@ -194,7 +198,7 @@ if (isset($_POST['submit'])) {
     </div>
 
     <footer class="text-center py-3">
-        <small>&copy; 2025 Online Voting System. All rights reserved.</small>
+        <small>&copy; <?= date('Y') ?> NextLead. All rights reserved.</small>
     </footer>
 
     <script>

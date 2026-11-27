@@ -138,6 +138,10 @@ footer.bg-light {
     }
 }
 </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 <div class="navbar navbar-dark" style="background-color: #007bff; padding: 0.5rem 1rem;">
@@ -163,7 +167,7 @@ footer.bg-light {
                     <i class="bi bi-plus-square-fill"></i>
                     <h5 class="card-title">Create Election</h5>
                     <p>Start a new election by providing title and schedule.</p>
-                    <a href="create_election.php" class="btn btn-light">Go</a>
+                    <a href="create_election.php" class="btn btn-light">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -171,7 +175,7 @@ footer.bg-light {
                     <i class="bi bi-bar-chart-line-fill"></i>
                     <h5 class="card-title">View Results</h5>
                     <p>Check the final results of completed elections.</p>
-                    <a href="results.php" class="btn btn-light">Go</a>
+                    <a href="results.php" class="btn btn-light">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -179,7 +183,7 @@ footer.bg-light {
                     <i class="bi bi-people-fill"></i>
                     <h5 class="card-title">Manage Voters</h5>
                     <p>Add, update, or delete voter information.</p>
-                    <a href="manage_voters.php" class="btn btn-light">Go</a>
+                    <a href="manage_voters.php" class="btn btn-light">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -187,7 +191,7 @@ footer.bg-light {
                     <i class="bi bi-person-lines-fill"></i>
                     <h5 class="card-title">Manage Candidates</h5>
                     <p>Update candidate info and assign them to elections.</p>
-                    <a href="manage_candidates.php" class="btn btn-light">Go</a>
+                    <a href="manage_candidates.php" class="btn btn-light">Open</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -195,14 +199,14 @@ footer.bg-light {
                     <i class="bi bi-geo-alt-fill"></i>
                     <h5 class="card-title">Manage Constituencies</h5>
                     <p>Create or update the list of constituencies.</p>
-                    <a href="constituency.php" class="btn btn-light">Go</a>
+                    <a href="constituency.php" class="btn btn-light">Open</a>
                 </div>
             </div>
         </div>
     </div>
 
     <footer class="bg-light text-center py-3 mt-5">
-        <small>&copy; 2025 Online Voting System. All rights reserved.</small>
+        <small>&copy; <?= date('Y') ?> NextLead. All rights reserved.</small>
     </footer>
 </body>
 </html>
