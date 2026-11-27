@@ -12,7 +12,7 @@ if (isset($_GET['delete_id'])) {
     $candidate_id = $_GET['delete_id'];
 
     // Prepare and execute delete query
-    $sql = "DELETE FROM candidates WHERE id = ?";
+    $sql = "DELETE FROM candidates WHERE candidate_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $candidate_id);
 
@@ -136,8 +136,8 @@ $conn->close();
                         <p class="card-text"><strong>Constituency:</strong> <?php echo htmlspecialchars($candidate['constituency_id']); ?></p>
                         <p class="card-text"><strong>Votes:</strong> <?php echo htmlspecialchars($candidate['votes']); ?></p>
                         <div class="d-flex justify-content-between">
-                            <a href="edit_candidate.php?id=<?php echo $candidate['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="?delete_id=<?php echo $candidate['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this candidate?');">Delete</a>
+                            <a href="edit_candidate.php?id=<?php echo $candidate['candidate_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="?delete_id=<?php echo $candidate['candidate_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this candidate?');">Delete</a>
                         </div>
                     </div>
                 </div>

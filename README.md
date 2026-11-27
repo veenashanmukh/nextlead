@@ -4,7 +4,7 @@ This is a PHP + MySQL app. **GitHub Pages cannot run it** (Pages only serves sta
 It deploys from git to **Render** using the included `Dockerfile`, with a free cloud MySQL database.
 
 ## 1. Create a free MySQL database
-Use any MySQL host, e.g. **Aiven** (aiven.io → free MySQL plan) or **TiDB Cloud Serverless**.
+Use **TiDB Cloud Starter** (tidbcloud.com, free, MySQL-compatible). Aiven's free MySQL plan was retired in Nov 2026.
 Copy its host, port, user, password and database name.
 The app creates its tables automatically the first time it connects (from `database.sql`).
 
@@ -16,8 +16,8 @@ The app creates its tables automatically the first time it connects (from `datab
 | Variable  | Value |
 |-----------|-------|
 | DB_HOST   | your MySQL host |
-| DB_PORT   | your MySQL port (Aiven gives one, e.g. 12345) |
-| DB_NAME   | database name (Aiven: `defaultdb`) |
+| DB_PORT   | your MySQL port (TiDB: 4000) |
+| DB_NAME   | database name (TiDB: `test`) |
 | DB_USER   | database user |
 | DB_PASS   | database password |
 | DB_SSL    | `true` |

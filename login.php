@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
                     $_SESSION['election_id'] = $row['election_id'];
                     header("Location: candidate.php");
                 } else {
-                    $_SESSION['admin_id'] = $row['admin_id'];
+                    $_SESSION['admin_id'] = $row['id'];
                     header("Location: admin.php");
                 }
                 exit;
